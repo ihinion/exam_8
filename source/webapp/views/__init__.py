@@ -1,1 +1,1 @@
-from .views import *
+from .product_views import *

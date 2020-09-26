@@ -1,0 +1,29 @@
+{% load staticfiles %}
+<div class="card bg-light mb-3">
+    <div class="card-body">
+    <div class="media">
+        {% if product.pic %}
+            <img src="{{ product.pic.url }}" class="align-self-start mr-3" width="200" height="auto" alt="user picture">
+        {% else %}
+            <img src="{% static 'no_pic.png' %}" class="align-self-start mr-3" width="200" height="auto" alt="user picture">
+        {% endif %}
+        <div class="media-body">
+            <h5 class="card-title font-weight-bold">{{ product.name }}</h5>
+        <p class="text-justify"><b>Category: {{ product.category }} </b> <br>
+        <p class="text-justify"><b>Description:</b> {{ product.description }}  <br>
+        <div class="form-inline">
+            <a class="btn btn-primary btn-sm mr-3" href="{% url 'webapp:product_view' product.pk %}" role="button">View</a>
+            {% if request.user.is_authenticated %}
+                {% if perms.webapp.change_product %}
+                    <a class="btn btn-info btn-sm mr-3" href="{% url 'webapp:product_update' product.pk %}" role="button">Update</a>
+                {% endif %}
+                {% if perms.webapp.delete_product %}
+                    <a class="btn btn-danger btn-sm mr-3" href="{% url 'webapp:product_delete' product.pk %}" role="button">Delete</a>
+                {% endif %}
+            {% endif %}
+        </div>
+        </div>
+    </div>
+
+    </div>
+</div>

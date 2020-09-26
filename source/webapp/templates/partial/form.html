@@ -17,7 +17,7 @@
                 <p>{{ field|add_class:'form-control'|attr:"placeholder:YYYY-MM-DD" }}</p>
             {% elif field.label == 'Types' or field.label == 'Users' %}
                 {{ field|add_class:'checkbox-form' }}
-            {% elif field.label == 'Profile pic' %}
+            {% elif field.label == 'Profile pic' or field.label == 'Product image' %}
                 <p>{{ field }}</p>
             {% else %}
                 <p>{{ field|add_class:'form-control' }}</p>

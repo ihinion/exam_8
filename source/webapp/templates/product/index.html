@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Product reviewer{% endblock %}
+{% block search %}
+    <form class="form-inline my-lg-0" action="{% url 'webapp:index' %}" method="get">
+        {% include 'partial/search.html' with button_text='Search' %}
+    </form>
+{% endblock %}
+{% block content %}
+    {% if products %}
+        {% for product in products %}
+            {% include 'partial/product_card.html' %}
+        {% endfor %}
+    {% else %}
+        {% if 'search' not in request.query %}
+            <h2 class="my-5">No projects yet</h2>
+        {% else %}
+            <h2 class="my-5">No results</h2>
+        {% endif %}
+    {% endif %}
+    {% if request.user.is_authenticated and perms.webapp.add_product %}
+        <a class="btn btn-primary btn-lg btn-block mb-4" href="{% url 'webapp:product_create' %}" role="button">Add product</a>
+    {% endif %}
+{% endblock %}

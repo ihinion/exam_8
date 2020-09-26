@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block title %}User page{% endblock %}
 
 {% block menu_links %}
@@ -15,7 +16,7 @@
         {% if user_obj.profile.profile_pic %}
             <img src="{{ user_obj.profile.profile_pic.url }}" class="align-self-start mr-3" width="250" height="auto" alt="user picture">
         {% else %}
-            <img src="https://vk.com/images/camera_200.png" class="align-self-start mr-3" width="250" height="auto" alt="user picture">
+            <img src="{% static 'no_pic.png' %}" class="align-self-start mr-3" width="250" height="auto" alt="user picture">
         {% endif %}
         <div class="media-body">
         <h5 class="mt-0">Page of {{ user_obj.get_full_name|default:user_obj.username }}</h5>

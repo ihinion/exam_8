@@ -18,16 +18,13 @@ class RegisterView(CreateView):
         user = form.save()
         Profile.objects.create(user=user).save()
         login(self.request, user)
-        return redirect('/')
+        return redirect('webapp:index')
 
 
-class UserDetailView(UserPassesTestMixin, DetailView):
+class UserDetailView(LoginRequiredMixin, DetailView):
     model = get_user_model()
     template_name = 'user_detail.html'
     context_object_name = 'user_obj'
-
-    def test_func(self):
-        return self.request.user == self.get_object()
 
 
 class UserChangeView(UserPassesTestMixin, UpdateView):
