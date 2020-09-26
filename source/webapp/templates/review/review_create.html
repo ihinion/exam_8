@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Add review{% endblock %}
+{% block content %}
+    <h1>Add review</h1>
+    {% url 'review_create' as action_url %}
+    {% include 'partial/form.html' with button_text='Add' action_url=action_url form_method='post' %}
+{% endblock %}

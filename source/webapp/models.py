@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.db.models import Avg
 
 CATEGORY_CHOICES = (
     ('other', 'Other'),
@@ -26,6 +27,15 @@ class Product(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+    def get_average(self):
+        avg = self.review_set.aggregate(
+            Avg('grade')
+        )
+        avg = avg.get('grade__avg')
+        if avg is not None:
+            return ("%.2f" % avg)
+        return 0
 
 
 class Review(models.Model):

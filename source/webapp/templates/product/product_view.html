@@ -4,4 +4,10 @@
     {% include 'partial/product_card.html' %}
     <hr class="mt-4">
     <h4 class="my-4">Reviews:</h4>
+    {% if not product.review_set.all %}
+        <p>No reviews yet</p>
+    {% endif %}
+    {% for review in product.review_set.all %}
+        {% include 'partial/review_card.html' %}
+    {% endfor %}
 {% endblock %}

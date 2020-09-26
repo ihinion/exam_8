@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<div class="card bg-light mb-3">
+    <div class="card-body">
+        <h5 class="card-title font-weight-bold">Author: {{ review.author }}</h5>
+        <p><b>Grade: {{ review.grade }} </b> <br>
+        <p class="text-justify"><b>Review:</b> {{ review.text }}  <br>
+        <div class="form-inline">
+            {% if request.user.is_authenticated %}
+                {% if perms.webapp.change_review or review.author == request.user %}
+                    <a class="btn btn-info btn-sm mr-3" href="{% url 'webapp:review_update' review.pk %}" role="button">Update</a>
+                {% endif %}
+                {% if perms.webapp.delete_review or review.author == request.user %}
+                    <a class="btn btn-danger btn-sm mr-3" href="{% url 'webapp:review_delete' review.pk %}" role="button">Delete</a>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>
