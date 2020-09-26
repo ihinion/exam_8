@@ -3,5 +3,5 @@
 {% block content %}
     <h1>Create project</h1>
     {% url 'product_create' as action_url %}
-    {% include 'partial/form.html' with button_text='Add' action_url=action_url form_method='post' %}
+    {% include 'partial/form.html' with button_text='Add' action_url=action_url form_method='post' enctype="multipart/form-data"%}
 {% endblock %}

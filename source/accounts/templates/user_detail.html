@@ -2,13 +2,15 @@
 {% load staticfiles %}
 {% block title %}User page{% endblock %}
 
-{% block menu_links %}
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'accounts:change' user_obj.pk %}">Edit</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'accounts:password_change'  %}">Change password</a>
-    </li>
+{% block nav %}
+    {% if request.user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:change' user_obj.pk %}">Edit</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:password_change'  %}">Change password</a>
+        </li>
+    {% endif %}
 {% endblock %}
 
 {% block content %}
@@ -19,11 +21,18 @@
             <img src="{% static 'no_pic.png' %}" class="align-self-start mr-3" width="250" height="auto" alt="user picture">
         {% endif %}
         <div class="media-body">
-        <h5 class="mt-0">Page of {{ user_obj.get_full_name|default:user_obj.username }}</h5>
+        <h5 class="mt-0">Page of {{ user_obj.get_first_name|default:user_obj.username }}</h5>
         <p>Username: {{ user_obj.username }}</p>
+        <p>Email: {{ user_obj.email }}</p>
         <p>About: {% if user_obj.profile.about %}{{ user_obj.profile.about }}{% else %}No details :/{% endif %}</p>
         </div>
     </div>
     <hr>
     <h2 class="my-3">Reviews of {{ user_obj.username }}:</h2>
+    {% if not user_obj.reviews.all %}
+        <p>This user hasn't made any reviews yet</p>
+    {% endif %}
+    {% for review in user_obj.reviews.all %}
+        {% include 'partial/review_card.html' %}
+    {% endfor %}
 {% endblock %}

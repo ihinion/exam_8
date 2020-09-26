@@ -4,7 +4,7 @@
     <div class="container">
         <h2 class="my-3">Update product</h2>
         {% url "product_update" pk=product.pk as action_url %}
-        {% include 'partial/form.html' with action_url=action_url form_method='post' button_text='Update' %}
+        {% include 'partial/form.html' with action_url=action_url form_method='post' button_text='Update' enctype="multipart/form-data"%}
         <a class="btn btn-info mt-2" href="{% url 'webapp:product_view' product.pk %}" role="button">View product</a><br>
     </div>
 {% endblock %}

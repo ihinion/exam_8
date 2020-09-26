@@ -1,0 +1,138 @@
+[
+{
+  "model": "webapp.product",
+  "pk": 1,
+  "fields": {
+    "name": "Some food product",
+    "description": "Amazing food",
+    "category": "food",
+    "pic": "product_pics/food.jpg"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 2,
+  "fields": {
+    "name": "Toy Product",
+    "description": "Some fancy description",
+    "category": "toys",
+    "pic": "product_pics/toy.jpg"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 3,
+  "fields": {
+    "name": "Gadget",
+    "description": "Very useful thing",
+    "category": "electronics",
+    "pic": ""
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 4,
+  "fields": {
+    "name": "BMW",
+    "description": "Fast and furious!",
+    "category": "cars",
+    "pic": "product_pics/bmw.jpg"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 5,
+  "fields": {
+    "name": "TEST product",
+    "description": "TEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST productTEST product",
+    "category": "other",
+    "pic": ""
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 2,
+  "fields": {
+    "author": 2,
+    "product": 4,
+    "text": "cool car",
+    "grade": 5
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 9,
+  "fields": {
+    "author": 2,
+    "product": 2,
+    "text": "Amazing",
+    "grade": 5
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 10,
+  "fields": {
+    "author": 2,
+    "product": 1,
+    "text": "I like it",
+    "grade": 4
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 11,
+  "fields": {
+    "author": 3,
+    "product": 1,
+    "text": "it's kinda meh",
+    "grade": 3
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 12,
+  "fields": {
+    "author": 4,
+    "product": 1,
+    "text": "I just like the image",
+    "grade": 5
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "about": null,
+    "profile_pic": ""
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 2,
+  "fields": {
+    "user": 2,
+    "about": "Nothing to see here",
+    "profile_pic": "user_pics/team_lead.jpg"
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 3,
+  "fields": {
+    "user": 3,
+    "about": "hmm",
+    "profile_pic": "user_pics/manager.jpg"
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 4,
+  "fields": {
+    "user": 4,
+    "about": "",
+    "profile_pic": "user_pics/moderator.jpeg"
+  }
+}
+]

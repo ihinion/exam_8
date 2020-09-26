@@ -1,10 +1,18 @@
 {% load staticfiles %}
 <div class="card bg-light mb-3">
     <div class="card-body">
-        <h5 class="card-title font-weight-bold">Author: {{ review.author }}</h5>
+        {% if 'accounts' not in request.path %}
+            <h5 class="card-title font-weight-bold">Author: <a href="{% url 'accounts:detail' review.author.pk %}">{{ review.author }}</a></h5>
+        {% endif %}
+        {% if 'accounts' in request.path %}
+            <h5 class="card-title font-weight-bold">Product: <a href="{% url 'webapp:product_view' review.product.pk %}">{{ review.product }}</a></h5>
+        {% endif %}
         <p><b>Grade: {{ review.grade }} </b> <br>
         <p class="text-justify"><b>Review:</b> {{ review.text }}  <br>
         <div class="form-inline">
+            {% if 'accounts' in request.path %}
+                <a class="btn btn-success btn-sm mr-3" href="{% url 'webapp:product_view' review.product.pk %}" role="button">View product</a>
+            {% endif %}
             {% if request.user.is_authenticated %}
                 {% if perms.webapp.change_review or review.author == request.user %}
                     <a class="btn btn-info btn-sm mr-3" href="{% url 'webapp:review_update' review.pk %}" role="button">Update</a>
