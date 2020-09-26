@@ -1,8 +1,6 @@
 from urllib.parse import urlencode
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
-from django.contrib.auth.models import User
-from django.db.models import Q
-from django.shortcuts import reverse, get_object_or_404, redirect
+from django.contrib.auth.mixins import UserPassesTestMixin
+from django.shortcuts import reverse
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from webapp.models import Product
